@@ -1,23 +1,17 @@
+## CERN webEOS hosting: you need to enable the .htaccess use by the server, see here:
+## See documentation at https://webeos.docs.cern.ch/manage_site/#using-htaccess-files
+
 ## CERN Signle sign-on
 ## Uncomment if you want to restrict the access to your files
-#
-# ShibRequireAll On
-# ShibRequireSession On
-# ShibExportAssertion On
-# SSLRequireSSL
-# AuthType Shibboleth
-# 
-# SSLVerifyClient optional
-# SSLVerifyDepth 5
-# SSLOptions +StrictRequire
-# 
-# # Authorized group 
-# Require adfs-group "cms-private"
+## READ this BEFORE https://webeos.docs.cern.ch/authorization/
+#AuthType openid-connect                                                                                                                                                                                     
+#Require valid-user                                                                                                                                                                                         
+#Require claim cern_roles:cms 
 
 ## END CERN SSO
 
 ## Tell Apache this is the web index
 ##
 # Put below the path to your index.php (starting from the server root)
-# eg /musella/higgs/index.php
+# eg /alobanov/public/index.php
 DirectoryIndex index.php index.html index.htm /<me>/<my-project>/index.php
